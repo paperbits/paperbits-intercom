@@ -1,4 +1,4 @@
-import { HtmlPagePublisherPlugin } from "./htmlPagePublisher";
+import { HtmlPagePublisherPlugin } from "@paperbits/common/publishing";
 import { ISiteService } from "@paperbits/common/sites";
 
 

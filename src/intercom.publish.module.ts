@@ -11,7 +11,7 @@ import { IInjectorModule, IInjector } from "@paperbits/common/injection";
 import { IntercomHtmlPagePublisherPlugin } from "./publishing";
 
 
-export class CorePublishModule implements IInjectorModule {
+export class IntercomPublishModule implements IInjectorModule {
     public register(injector: IInjector): void {
         injector.bindToCollection("htmlPagePublisherPlugins", IntercomHtmlPagePublisherPlugin);
     }
