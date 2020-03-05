@@ -1,6 +1,6 @@
 {
     "name": "@paperbits/intercom",
-    "version": "0.1.236",
+    "version": "0.1.237",
     "description": "Intercom library for Paperbits components.",
     "license": "MIT",
     "author": "Paperbits",
@@ -13,6 +13,6 @@
         "intercom"
     ],
     "dependencies": {
-        "@paperbits/common": "0.1.236"
+        "@paperbits/common": "0.1.237"
     }
 }
