@@ -1,19 +1,20 @@
 import { HtmlPagePublisherPlugin } from "@paperbits/common/publishing";
 import { ISiteService } from "@paperbits/common/sites";
+import { IntercomSettings } from "../publishing/intercomSettings";
 
 
 export class IntercomHtmlPagePublisherPlugin implements HtmlPagePublisherPlugin {
     constructor(private readonly siteService: ISiteService) { }
 
     public async apply(document: Document): Promise<void> {
-        const settings = await this.siteService.getSiteSettings();
+        const settings = await this.siteService.getIntegrationSettings<IntercomSettings>("intercom");
 
-        if (!settings || !settings.integration || !settings.integration.intercom) {
+        if (!settings?.appId) {
             return;
         }
 
         const settingsScriptElement = document.createElement("script");
-        settingsScriptElement.innerHTML = `window.intercomSettings = { app_id: "${settings.integration.intercom.appId}" };`;
+        settingsScriptElement.innerHTML = `window.intercomSettings = { app_id: "${settings.appId}" };`;
         document.head.appendChild(settingsScriptElement);
 
         const bootstrapperScriptElement = document.createElement("script");
