@@ -7,14 +7,15 @@ export class IntercomHtmlPagePublisherPlugin implements HtmlPagePublisherPlugin 
     constructor(private readonly siteService: ISiteService) { }
 
     public async apply(document: Document): Promise<void> {
-        const settings = await this.siteService.getIntegrationSettings<IntercomSettings>("intercom");
+        const settings = await this.siteService.getSettings<any>();
+        const intercomSettings: IntercomSettings = settings?.integration?.intercom;
 
-        if (!settings?.appId) {
+        if (!intercomSettings?.appId) {
             return;
         }
 
         const settingsScriptElement = document.createElement("script");
-        settingsScriptElement.innerHTML = `window.intercomSettings = { app_id: "${settings.appId}" };`;
+        settingsScriptElement.innerHTML = `window.intercomSettings = { app_id: "${intercomSettings.appId}" };`;
         document.head.appendChild(settingsScriptElement);
 
         const bootstrapperScriptElement = document.createElement("script");
