@@ -13,6 +13,6 @@ import { IntercomHtmlPagePublisherPlugin } from "./publishing";
 
 export class IntercomPublishModule implements IInjectorModule {
     public register(injector: IInjector): void {
-        injector.bindToCollection("htmlPagePublisherPlugins", IntercomHtmlPagePublisherPlugin);
+        injector.bindToCollectionAsSingletone("htmlPagePublisherPlugins", IntercomHtmlPagePublisherPlugin);
     }
 }
